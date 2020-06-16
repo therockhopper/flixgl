@@ -1,18 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Woo</title>
-</head>
-<body>
-  <script src="pixi.min.js"></script>
-  <script type="text/javascript">
-    let type = "WebGL"
-    if(!PIXI.utils.isWebGLSupported()){
-      type = "canvas"
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <title>Flix GL</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="pixi.min.js"></script>
+    <script type="text/javascript">
+      let app = new PIXI.Application({
+        width: 256,
+        height: 256,
+        transparent: false,
+      });
 
-    PIXI.utils.sayHello(type)
-  </script>
-</body>
+      // Scale the canvas to the window size
+      app.renderer.view.style.position = 'absoulte';
+      app.renderer.view.style.display = 'block';
+      app.renderer.view.autoResize = true;
+      app.renderer.resize(window.innerWidth, window.innerHeight);
+
+      document.body.appendChild(app.view);
+    </script>
+  </body>
 </html>
